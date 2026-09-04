@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/* Sleek Interface Design Tokens & Palette */
+:root {
+  --sleek-bg: #F8FAFC;
+  --sleek-dark: #212529;
+  --sleek-primary: #2563EB;
+  --sleek-primary-dark: #1D4ED8;
+  --sleek-primary-light: #EFF6FF;
+  --sleek-slate-800: #1E293B;
+  --sleek-slate-500: #64748B;
+  --sleek-slate-400: #94A3B8;
+  --sleek-border: #E2E8F0;
+  --bs-primary: #2563eb;
+  --bs-primary-rgb: 37, 99, 235;
+  --bs-dark: #212529;
+  --bs-dark-rgb: 33, 37, 41;
+  --bs-body-font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  background-color: #F8FAFC;
+  color: #1E293B;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Sleek Animations */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 9s linear infinite;
+}
+
+/* Radar & Laser Scanner Animation for AI Pre-Screening */
+@keyframes laserScan {
+  0% {
+    top: 0%;
+    opacity: 0.85;
+  }
+  50% {
+    top: 96%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.85;
+  }
+}
+
+.ai-scan-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-scan-laser {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(37,99,235,0) 0%, #2563eb 50%, rgba(37,99,235,0) 100%);
+  box-shadow: 0 0 12px #2563eb, 0 0 20px #60a5fa;
+  animation: laserScan 2.4s ease-in-out infinite;
+  z-index: 10;
+}
+
+.ai-grid-scanner {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(37, 99, 235, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+}
+
+/* Sleek Stepper */
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stepper-item::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background-color: #E2E8F0;
+  z-index: 1;
+}
+
+.stepper-item:last-child::after {
+  display: none;
+}
+
+.stepper-item.completed::after,
+.stepper-item.active::after {
+  background-color: #2563EB;
+}
+
+.stepper-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* Sleek Digital Ticket styling */
+.ticket-container {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-container::before,
+.ticket-container::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 50%;
+  top: 65%;
+  z-index: 5;
+}
+
+.ticket-container::before {
+  left: -13px;
+}
+
+.ticket-container::after {
+  right: -13px;
+}
+
+.ticket-divider {
+  border-top: 2px dashed #CBD5E1;
+  position: relative;
+}
+
+/* Printable Ticket styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-ticket, #printable-ticket * {
+    visibility: visible;
+  }
+  #printable-ticket {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Sleek Card Hover & Interactive Effects */
+.hover-lift {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -10px rgba(37, 99, 235, 0.12) !important;
+}
+
+/* Sleek Floating Chatbot Bubble */
+.veribot-floating-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1040;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.veribot-floating-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Sleek Buttons and Components overrides */
+.btn-primary {
+  background-color: #2563EB !important;
+  border-color: #2563EB !important;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
+}
+
+.btn-outline-primary {
+  color: #2563EB !important;
+  border-color: #2563EB !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #2563EB !important;
+  color: #ffffff !important;
+}
+
+.text-primary {
+  color: #2563EB !important;
+}
+
+.bg-primary {
+  background-color: #2563EB !important;
+}
+
+.border-primary {
+  border-color: #2563EB !important;
+}
+
+/* QR Scanner Custom Styling */
+#reader {
+  border: none !important;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+#reader video {
+  border-radius: 12px;
+}
+#qr-shaded-region {
+  border-width: 40px !important;
+  border-color: rgba(0,0,0,0.6) !important;
+}
+#qr-shaded-region > div {
+  border-color: #10b981 !important; /* Emerald green */
+  box-shadow: 0 0 12px 2px rgba(16, 185, 129, 0.6) !important;
+  border-width: 4px !important;
+  border-radius: 8px;
+}
+
+
+/* Sembunyikan scrollbar di chip saran */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.max-w-80 {
+    max-width: 80%;
+}
+.fs-7 { font-size: 0.875rem; }
+.fs-8 { font-size: 0.75rem; }

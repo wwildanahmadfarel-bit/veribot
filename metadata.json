@@ -1,0 +1,6 @@
+{
+  "name": "AIPEX VeriBot",
+  "description": "Platform pra-pemeriksaan (pre-screening) dokumen kependudukan berbasis Cognitive AI yang hadir dalam 2 antarmuka: WhatsApp Chatbot dan Web Portal Kelurahan.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
